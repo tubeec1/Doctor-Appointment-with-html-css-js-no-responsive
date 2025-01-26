@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="./style.css">
+    <title>Document</title>
+  
+</head>
+<body>
+    <div class="container">
+        <!--Nav-->
+        <div id="nav">
+            <div id="log-com">
+              <img src="./images/logo.svg" alt="">
+            </div>
+            <ul>
+              <li><a href="./index.html">HOME</a></li>
+              <li><a href="./allDoctors.html" class="active">ALL DOCTORS</a></li>
+              <li><a href="./about.html">ABOUT</a></li>
+              <li><a href="./contact.html">CONTACT</a></li>
+              <li><a href="" id="btnAdminPanel">Admin Panel</a></li>
+            </ul>
+            <div>
+                <a href="./createAccount.html">Create account</a>
+            </div>
+          </div>
+          <!--All Doctors and Buttons Part-->
+          <div id="containerBtnsDoctos">
+            <p>Browse through the doctors specialist.</p>
+            <div id="btnDoctors">
+                <div id="btns">
+                    <button class="btnSpeciality" onclick="selectedSpeciality('General physician',this)">General physician</button>
+                    <button class="btnSpeciality" onclick="selectedSpeciality('Gynecologist',this)">Gynecologist</button>
+                    <button class="btnSpeciality" onclick="selectedSpeciality('Dermatologist',this)">Dermatologist</button>
+                    <button class="btnSpeciality" onclick="selectedSpeciality('Pediatricians',this)">Pediatricians</button>
+                    <button class="btnSpeciality" onclick="selectedSpeciality('Neurologist',this)">Neurologist</button>
+                    <button class="btnSpeciality" onclick="selectedSpeciality('Gastroenterologist',this)">Gastroenterologist</button>
+                </div>
+                <div id="allDoctorsBoxes">
+
+                </div>
+            </div>
+          </div>
+
+
+          <!--Subfooter and footer-->
+          <div id="subFooter">
+            <div id="desc">
+              <img src="./images/logo.svg" alt="">
+              <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.</p>
+            </div>
+            <div id="company">
+              <h3>COMPANY</h1>
+              <p>Home</p>
+              <p>About</p>
+              <p>Delivery</p>
+              <p>Privacy policy</p>
+            </div>
+            <div id="getInTouch">
+              <h3>GET IN TOUCH</h3>
+              <p>+252-618-994-037</p>
+              <p>mohamedsuleyman813@gmail.com</p>
+            </div>
+          </div>
+          <div id="footer">
+            <hr>
+            <p>Copyright 2024 @ Greatstack.dev - All Right Reserved.</p>
+          </div>
+    </div>
+
+
+    <script src="./script.js"></script>
+</body>
+</html>

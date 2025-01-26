@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="./style.css">
+  <title>Document</title>
+</head>
+<body>
+  <div class="container">
+     <!--Nav-->
+     <div id="nav">
+      <div id="log-com">
+        <img src="./images/logo.svg" alt="">
+      </div>
+      <ul>
+        <li><a href="./index.html">HOME</a></li>
+        <li><a href="./allDoctors.html">ALL DOCTORS</a></li>
+        <li><a href="./about.html">ABOUT</a></li>
+        <li><a href="./contact.html">CONTACT</a></li>
+        <li><a href="" id="btnAdminPanel">Admin Panel</a></li>
+      </ul>
+      <div>
+          <a href="./createAccount.html">Create account</a>
+      </div>
+    </div>
+
+    <!--Doctor Profile displaying-->
+    <div id="doctorProfile">
+      <div id="img">
+        <img id="displayDoctorImage">
+      </div>
+      <div id="doctorInfo">
+        <h2 id="displayDoctorName"></h2>
+        <p>MBBS - <span id="displayDoctorSpeciality"></span> <span id="years"></span></p>
+        <h4>About</h4>
+        <p><span id="displayDoctorAbout"></span> has a strong commitment to delivering comprehensive medical care, focusing on preventive medicine, early diagnosis, and effective treatment strategies.he/she has a strong commitment to delivering comprehensive medical care, focusing on preventive medicine, early diagnosis, and effective treatment strategies.</p>
+        <h3>Appointment fee: <span id="displayDoctorAppFee"></span></h3>
+      </div>
+    </div>
+
+    <!--Booking Slots-->
+    <div id="bookingSlots">
+      <h3>Booking Slots</h3>
+      <div id="selectDate">
+       <input type="datetime-local" placeholder="Select your appointment date" id="selectDateTime">
+      </div>
+      <button id="btnAppointment">Book an appointment</button>
+    </div>
+
+    <!--Display doctor selected related speciality-->
+    <div id="relatedDoctors">
+      <h2>Related Doctors </h2>
+      <p>Simply browse through our extensive list of trusted doctors.</p>
+      <div id="doctorsBoxes">
+
+      </div>
+    </div>
+    <!--subfooter and footer-->
+    <div id="subFooter">
+      <div id="desc">
+        <img src="./images/logo.svg" alt="">
+        <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.</p>
+      </div>
+      <div id="company">
+        <h3>COMPANY</h1>
+        <p>Home</p>
+        <p>About</p>
+        <p>Delivery</p>
+        <p>Privacy policy</p>
+      </div>
+      <div id="getInTouch">
+        <h3>GET IN TOUCH</h3>
+        <p>+252-618-994-037</p>
+        <p>mohamedsuleyman813@gmail.com</p>
+      </div>
+    </div>
+    <div id="footer">
+      <hr>
+      <p>Copyright 2024 @ Greatstack.dev - All Right Reserved.</p>
+    </div>
+  </div>
+
+
+  <script src="./script.js"></script>
+</body>
+</html>

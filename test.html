@@ -1,0 +1,721 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>SSDA – Somali Social Development Association</title>
+  <style>
+    /*******************************************************
+     *               GLOBAL & RESET STYLES                *
+     *******************************************************/
+    * {
+      margin: 0; 
+      padding: 0; 
+      box-sizing: border-box;
+    }
+    body {
+      font-family: "Helvetica Neue", Arial, sans-serif;
+      background-color: #f8f9fa;
+      color: #333;
+      line-height: 1.6;
+      /* The default language will be English */
+    }
+    a {
+      text-decoration: none;
+      color: inherit;
+    }
+
+    /* Hide Somali text by default */
+    .lang-so {
+      display: none;
+    }
+
+    /*******************************************************
+     *                   HEADER & NAVBAR                   *
+     *******************************************************/
+    header {
+      background-color: #073B5D;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 10px 20px;
+      position: sticky;
+      top: 0;
+      z-index: 999;
+    }
+    .header-left {
+      display: flex;
+      align-items: center;
+    }
+    .header-left img {
+      width: 60px;
+      height: auto;
+      margin-right: 15px;
+    }
+    .header-left h2 {
+      color: #fff;
+      font-size: 20px;
+      font-weight: bold;
+      letter-spacing: 1px;
+    }
+
+    /* Desktop Menu */
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 20px;
+    }
+    .nav-links a {
+      color: #fff;
+      font-size: 16px;
+      transition: color 0.3s;
+    }
+    .nav-links a:hover {
+      color: #e2e2e2;
+    }
+
+    /* Language Switcher */
+    .lang-switch {
+      display: flex;
+      gap: 5px;
+    }
+    .lang-switch button {
+      background-color: #fff;
+      color: #073B5D;
+      border: none;
+      padding: 5px 10px;
+      border-radius: 5px;
+      cursor: pointer;
+      font-size: 14px;
+      transition: background-color 0.3s;
+    }
+    .lang-switch button:hover {
+      background-color: #ddd;
+    }
+
+    /* Hamburger for mobile */
+    .hamburger {
+      display: none;
+      flex-direction: column;
+      gap: 5px;
+      cursor: pointer;
+    }
+    .hamburger span {
+      width: 25px;
+      height: 3px;
+      background-color: #fff;
+      border-radius: 3px;
+    }
+
+    /* Mobile menu overlay */
+    .mobile-menu {
+      position: fixed;
+      top: 60px;
+      right: 0;
+      background-color: #073B5D;
+      width: 200px;
+      padding: 20px;
+      display: none;
+      flex-direction: column;
+      gap: 15px;
+      z-index: 1000;
+    }
+    .mobile-menu a {
+      color: #fff;
+      font-size: 16px;
+      border-bottom: 1px solid rgba(255,255,255,0.2);
+      padding-bottom: 5px;
+    }
+
+    /*******************************************************
+     *                   HERO SECTION                      *
+     *******************************************************/
+    .hero {
+      background: linear-gradient(120deg, #073B5D, #0D7EA6);
+      background-size: 200% 200%;
+      animation: gradientAnimation 15s ease infinite;
+      color: #fff;
+      text-align: center;
+      padding: 70px 20px;
+    }
+    @keyframes gradientAnimation {
+      0%   { background-position: 0% 50%; }
+      50%  { background-position: 100% 50%; }
+      100% { background-position: 0% 50%; }
+    }
+    .hero h1 {
+      font-size: 32px;
+      margin-bottom: 15px;
+      font-weight: bold;
+    }
+    .hero p {
+      font-size: 18px;
+      max-width: 800px;
+      margin: 0 auto 25px auto;
+    }
+    .hero .cta-button {
+      background: #ffcc00;
+      color: #004670;
+      border: none;
+      padding: 14px 36px;
+      font-size: 18px;
+      border-radius: 6px;
+      cursor: pointer;
+      font-weight: bold;
+      transition: transform 0.3s, box-shadow 0.3s;
+      display: inline-block;
+      margin-top: 10px;
+      text-decoration: none;
+    }
+    .hero .cta-button:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 8px 24px rgba(255, 204, 0, 0.4);
+    }
+
+    /*******************************************************
+     *                      SECTION                        *
+     *******************************************************/
+    section {
+      padding: 60px 20px;
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+    section h2 {
+      font-size: 28px;
+      margin-bottom: 15px;
+      color: #073B5D;
+      text-align: center;
+    }
+    section p {
+      font-size: 16px;
+      color: #555;
+      max-width: 1000px;
+      margin: 0 auto;
+      text-align: center;
+    }
+
+    /*******************************************************
+     *                    ABOUT SECTION                    *
+     *******************************************************/
+    .about-content {
+      margin-top: 30px;
+      text-align: left;
+      max-width: 1000px;
+      margin: 30px auto 0 auto;
+      line-height: 1.5;
+    }
+    .about-content h3 {
+      color: #073B5D;
+      margin-top: 20px;
+      margin-bottom: 8px;
+      font-size: 20px;
+    }
+    .about-content ul {
+      list-style: disc;
+      margin-left: 40px;
+      margin-top: 8px;
+    }
+
+    /*******************************************************
+     *                    PROJECT SECTION                  *
+     *******************************************************/
+    .project-cards {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+      gap: 20px;
+      margin-top: 40px;
+    }
+    .project-card {
+      background-color: #fff;
+      border-radius: 8px;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+      transition: transform 0.3s;
+    }
+    .project-card:hover {
+      transform: translateY(-4px);
+    }
+    .project-card img {
+      width: 100%;
+      height: 170px;
+      object-fit: cover;
+    }
+    .project-card-content {
+      padding: 20px;
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+    }
+    .project-card-content h3 {
+      margin-bottom: 10px;
+      font-size: 18px;
+      color: #073B5D;
+    }
+    .project-card-content p {
+      font-size: 14px;
+      color: #555;
+      margin-bottom: auto;
+    }
+    .read-more-btn {
+      background-color: #0D7EA6;
+      color: #fff;
+      border: none;
+      padding: 10px 18px;
+      border-radius: 5px;
+      cursor: pointer;
+      align-self: flex-start;
+      margin-top: 15px;
+      transition: background-color 0.3s;
+    }
+    .read-more-btn:hover {
+      background-color: #099;
+    }
+
+    /*******************************************************
+     *                       MODALS                        *
+     *******************************************************/
+    .modal {
+      display: none; /* Hidden by default */
+      position: fixed;
+      z-index: 9999;
+      left: 0;
+      top: 0;
+      width: 100%;
+      height: 100%;
+      overflow: auto;
+      background-color: rgba(0,0,0,0.7);
+    }
+    .modal-content {
+      background-color: #fff;
+      margin: 60px auto;
+      padding: 20px;
+      border-radius: 8px;
+      max-width: 800px;
+      position: relative;
+    }
+    .modal-content h3 {
+      margin-bottom: 10px;
+      color: #073B5D;
+    }
+    .modal-content p {
+      margin-bottom: 12px;
+      color: #555;
+      line-height: 1.6;
+    }
+    .close-btn {
+      color: #333;
+      font-size: 24px;
+      font-weight: bold;
+      position: absolute;
+      top: 20px;
+      right: 20px;
+      cursor: pointer;
+    }
+    .close-btn:hover {
+      color: #000;
+    }
+
+    /*******************************************************
+     *                       FOOTER                        *
+     *******************************************************/
+    footer {
+      background-color: #073B5D;
+      color: #fff;
+      text-align: center;
+      padding: 20px;
+      margin-top: 40px;
+    }
+    footer p {
+      font-size: 14px;
+    }
+    footer a {
+      color: #fff;
+      text-decoration: underline;
+    }
+
+    /*******************************************************
+     *                      RESPONSIVE                     *
+     *******************************************************/
+    @media (max-width: 992px) {
+      .nav-links {
+        display: none;
+      }
+      .hamburger {
+        display: flex;
+      }
+    }
+    @media (max-width: 768px) {
+      .about-content, .modal-content {
+        width: 90%;
+      }
+      .hero h1 {
+        font-size: 26px;
+      }
+      .hero p {
+        font-size: 16px;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- ========== HEADER ========== -->
+  <header>
+    <div class="header-left">
+      <!-- Replace with your actual logo path -->
+      <img src="images/ssda_logo.png" alt="SSDA Logo">
+      <h2>SSDA</h2>
+    </div>
+    
+    <!-- Desktop Navigation Links -->
+    <nav class="nav-links">
+      <!-- English Links -->
+      <a href="#about" class="lang-en">About</a>
+      <a href="#projects" class="lang-en">Projects</a>
+      <a href="mailto:info@ssda.so" class="lang-en">Contact</a>
+      <!-- Somali Links -->
+      <a href="#about" class="lang-so">Nagu Saabsan</a>
+      <a href="#projects" class="lang-so">Mashaariic</a>
+      <a href="mailto:info@ssda.so" class="lang-so">Nala Soo Xiriir</a>
+
+      <!-- Language Switcher -->
+      <div class="lang-switch">
+        <button id="btnEnglish">English</button>
+        <button id="btnSomali">Somali</button>
+      </div>
+    </nav>
+
+    <!-- Hamburger Icon (Mobile Only) -->
+    <div class="hamburger" id="hamburger">
+      <span></span>
+      <span></span>
+      <span></span>
+    </div>
+  </header>
+
+  <!-- Mobile Menu Overlay -->
+  <div class="mobile-menu" id="mobileMenu">
+    <!-- English Links -->
+    <a href="#about" class="lang-en">About</a>
+    <a href="#projects" class="lang-en">Projects</a>
+    <a href="mailto:info@ssda.so" class="lang-en">Contact</a>
+    <!-- Somali Links -->
+    <a href="#about" class="lang-so">Nagu Saabsan</a>
+    <a href="#projects" class="lang-so">Mashaariic</a>
+    <a href="mailto:info@ssda.so" class="lang-so">Nala Soo Xiriir</a>
+    
+    <!-- Language Switcher -->
+    <div class="lang-switch">
+      <button id="btnEnglishMobile">English</button>
+      <button id="btnSomaliMobile">Somali</button>
+    </div>
+  </div>
+
+  <!-- ========== HERO SECTION ========== -->
+  <section class="hero">
+    <!-- English -->
+    <h1 class="lang-en">Somali Social Development Association (SSDA)</h1>
+    <p class="lang-en">
+      Working to alleviate human suffering, foster rural development, and empower communities  
+      through education, peace building, and sustainable projects across Somalia and beyond.
+    </p>
+    <a href="#about" class="cta-button lang-en">Learn More</a>
+
+    <!-- Somali -->
+    <h1 class="lang-so">Ururka Horumarinta Bulshada Soomaaliyeed (SSDA)</h1>
+    <p class="lang-so">
+      Waxaan u taaganahay yaraynta dhibaatada bani’aadamka, horumarinta miyiga,  
+      iyo kobcinta bulshadeenna annagoo adeegsanayna waxbarasho, nabadda dhisid,  
+      iyo mashaariic waara oo guud ahaan Soomaaliya iyo meelaha kale ah.
+    </p>
+    <a href="#about" class="cta-button lang-so">Akhri Inta Kale</a>
+  </section>
+
+  <!-- ========== ABOUT SECTION ========== -->
+  <section id="about">
+    <h2 class="lang-en">Who We Are</h2>
+    <p class="lang-en">
+      SSDA is a registered Non-Governmental Organization in Somalia and Finland,  
+      founded on December 12, 1998, in Helsinki, Finland.
+    </p>
+
+    <h2 class="lang-so">Yaa Nahay</h2>
+    <p class="lang-so">
+      SSDA waa Urur aan dawli ahayn (NGO) oo ka diiwaan gashan Soomaaliya iyo Finland.  
+      Waxaa la aasaasay Disembar 12, 1998, magaalada Helsinki, Finland.
+    </p>
+
+    <div class="about-content">
+      <!-- English About -->
+      <div class="lang-en">
+        <h3>General Information</h3>
+        <p>
+          The aim of the organization is to alleviate human suffering following civil strife  
+          and natural disasters. SSDA focuses on rural development to reduce hunger, clan warfare,  
+          and lack of education, engaging in relief, emergency, recovery, capacity building,  
+          monitoring, and evaluation.
+        </p>
+        <h3>Geographical Coverage</h3>
+        <p>
+          SSDA operates primarily in south and central Somalia: Galgadud, Mudug, Hiiraan, Banadir,  
+          Lower Shabelle, plus the Finnish Somali community.
+        </p>
+        <h3>Focus Areas</h3>
+        <ul>
+          <li>Livelihood, WASH</li>
+          <li>Infrastructure rehabilitation (cash-for-work)</li>
+          <li>Youth empowerment (skills training, recreation)</li>
+          <li>Peace building and reconciliation</li>
+          <li>Education enhancement</li>
+          <li>Gender mainstreaming</li>
+          <li>Environment protection</li>
+          <li>Governance and rule of law</li>
+          <li>Rural development (Agro Pastoral)</li>
+        </ul>
+        <h3>Vision</h3>
+        <p>
+          SSDA strives for sustainable social, economic, and political development programs in Somalia.
+        </p>
+        <h3>Mission</h3>
+        <p>
+          Work with Somali communities to improve their social, economic, political,  
+          and cultural well-being through integrated initiatives in emergency, recovery,  
+          capacity building, and economic development.
+        </p>
+      </div>
+
+      <!-- Somali About -->
+      <div class="lang-so">
+        <h3>Macluumaad Guud</h3>
+        <p>
+          Ujeeddada ururka waa in la yareeyo dhibaatada aadanaha ka dib dhibaatooyinka  
+          colaadda sokeeye iyo musiibooyinka dabiiciga ah. SSDA waxay diiradda saartaa  
+          horumarinta miyiga si loo yareeyo gaajada, colaadaha qabiilka, iyo waxbarasho la’aanta,  
+          annagoo ka shaqeyna gargaarka, xaaladaha degdegga ah, soo kabashada, dhisidda kartida,  
+          kormeerka, iyo qiimeynta.
+        </p>
+        <h3>Goobaha Shaqada</h3>
+        <p>
+          SSDA waxay si gaar ah uga shaqaysaa koonfurta iyo bartamaha Soomaaliya: Galgadud, Mudug,  
+          Hiiraan, Banadir, Shabeellaha Hoose, iyo bulshada Soomaalida Finland.
+        </p>
+        <h3>Meelaha Aan Diiradda Saarno</h3>
+        <ul>
+          <li>Hab-nololeed (Livelihood), WASH</li>
+          <li>Dib-u-habaynta kaabayaasha (lacag-qabso)</li>
+          <li>Dhallinyarada (tababar xirfadeed, madadaalo)</li>
+          <li>Nabadda dhisid iyo dib-u-heshiisiin</li>
+          <li>Kobcinta waxbarashada</li>
+          <li>Is-dhexgalka jinsiga (Gender mainstreaming)</li>
+          <li>Ilaalinta deegaanka</li>
+          <li>Maamul wanaag iyo sharciga xukunkiisa</li>
+          <li>Horumarinta miyiga (Agro Pastoral)</li>
+        </ul>
+        <h3>Aragtideenna</h3>
+        <p>
+          SSDA waxay hiigsanaysaa horumar bulsho, dhaqaale, iyo siyaasad oo waara  
+          leh (sustainable) gudaha Soomaaliya.
+        </p>
+        <h3>Hadafkeenna</h3>
+        <p>
+          La shaqaynta bulshada Soomaaliyeed si loo wanaajiyo xaaladdooda bulsho,  
+          dhaqaale, siyaasad, iyo dhaqameed annagoo adeegsanayna mashaariic isku dhafan  
+          oo ka kooban gargaarka degdegga ah, soo kabashada, dhisidda awoodda,  
+          iyo horumarinta dhaqaalaha.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ========== PROJECTS SECTION ========== -->
+  <section id="projects">
+    <h2 class="lang-en">Our Projects</h2>
+    <p class="lang-en">
+      Explore key initiatives addressing development, education, environment, and more.
+    </p>
+
+    <h2 class="lang-so">Mashaariicdayada</h2>
+    <p class="lang-so">
+      Ka daawo mashaariic muhiim ah oo diiradda saaraya horumar, waxbarasho,  
+      deegaanka, iyo arrimo kale oo muhiim ah.
+    </p>
+
+    <div class="project-cards">
+      <!-- Project 1 -->
+      <div class="project-card">
+        <img src="images/project1.jpg" alt="Project 1">
+        <div class="project-card-content">
+          <h3 class="lang-en">Himan Cooperative Deployment</h3>
+          <h3 class="lang-so">Mashruuca Himan Cooperative</h3>
+          <p class="lang-en">Agricultural support in Galgadud, benefiting 250 families.</p>
+          <p class="lang-so">Taageero beeraha Galgadud, oo anfici doonta 250 qoys.</p>
+          <button class="read-more-btn" data-modal="modal1">Read More</button>
+        </div>
+      </div>
+
+      <!-- Project 2 -->
+      <div class="project-card">
+        <img src="images/project2.jpg" alt="Project 2">
+        <div class="project-card-content">
+          <h3 class="lang-en">Nomadic Development Project</h3>
+          <h3 class="lang-so">Mashruuca Horumarinta Reer-guuraaga</h3>
+          <p class="lang-en">Building schools and training nomads in Bowdodhogore Village.</p>
+          <p class="lang-so">Dhismaha iskuulo iyo tababar siinta reer-guuraaga Bowdodhogore.</p>
+          <button class="read-more-btn" data-modal="modal2">Read More</button>
+        </div>
+      </div>
+
+      <!-- Add more project cards as needed... -->
+    </div>
+  </section>
+
+  <!-- ========== MODALS (FULL PROJECT INFO) ========== -->
+  <!-- Project 1 Modal -->
+  <div class="modal" id="modal1">
+    <div class="modal-content">
+      <span class="close-btn" data-close="modal1">&times;</span>
+      <!-- English -->
+      <div class="lang-en">
+        <h3>Himan Cooperative Deployment Project</h3>
+        <p><strong>Donor:</strong> Finnish Foreign Ministry</p>
+        <p><strong>Duration:</strong> December 2005</p>
+        <p><strong>Activity:</strong> Agricultural Development</p>
+        <p><strong>Location:</strong> Adado, Galgadud</p>
+        <p><strong>Beneficiaries:</strong> 250 families</p>
+      </div>
+      <!-- Somali -->
+      <div class="lang-so">
+        <h3>Mashruuca Himan Cooperative</h3>
+        <p><strong>Deeq Bixiye:</strong> Wasaaradda Arrimaha Dibadda Finland</p>
+        <p><strong>Muddo:</strong> Diseembar 2005</p>
+        <p><strong>Waxqabad:</strong> Horumarinta Beeraha</p>
+        <p><strong>Goob:</strong> Adado, Galgadud</p>
+        <p><strong>Dadkii Ka Faa’iiday:</strong> 250 qoys</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- Project 2 Modal -->
+  <div class="modal" id="modal2">
+    <div class="modal-content">
+      <span class="close-btn" data-close="modal2">&times;</span>
+      <!-- English -->
+      <div class="lang-en">
+        <h3>Nomadic Development Project</h3>
+        <p><strong>Donor:</strong> Finnish Foreign Ministry</p>
+        <p><strong>Duration:</strong> Jan 2006 – Dec 2008</p>
+        <p><strong>Activity:</strong> School built & Nomadic training</p>
+        <p><strong>Location:</strong> Bowdodhogore Village, Galgadud</p>
+        <p><strong>Beneficiaries:</strong> 300 families</p>
+      </div>
+      <!-- Somali -->
+      <div class="lang-so">
+        <h3>Mashruuca Horumarinta Reer-guuraaga</h3>
+        <p><strong>Deeq Bixiye:</strong> Wasaaradda Arrimaha Dibadda Finland</p>
+        <p><strong>Muddo:</strong> Jan 2006 – Dec 2008</p>
+        <p><strong>Waxqabad:</strong> Dhismaha iskuul & tababar reer-guuraaga</p>
+        <p><strong>Goob:</strong> Bowdodhogore, Galgadud</p>
+        <p><strong>Dadkii Ka Faa’iiday:</strong> 300 qoys</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- ========== FOOTER ========== -->
+  <footer>
+    <p class="lang-en">
+      &copy; 2025 Somali Social Development Association (SSDA). All rights reserved.  
+      Mogadishu | Adado | Galkayo | Helsinki |  
+      <a href="mailto:info@ssda.so">info@ssda.so</a>
+    </p>
+    <p class="lang-so">
+      &copy; 2025 Ururka Horumarinta Bulshada Soomaaliyeed (SSDA). Dhammaan xuquuqdu way xifdisan yihiin.  
+      Muqdisho | Adado | Galkacyo | Helsinki |  
+      <a href="mailto:info@ssda.so">info@ssda.so</a>
+    </p>
+  </footer>
+
+  <!-- ========== JAVASCRIPT ========== -->
+  <script>
+    // ----- Language Toggle -----
+    const btnEnglish = document.getElementById('btnEnglish');
+    const btnSomali = document.getElementById('btnSomali');
+    const btnEnglishMobile = document.getElementById('btnEnglishMobile');
+    const btnSomaliMobile = document.getElementById('btnSomaliMobile');
+
+    const langEN = document.querySelectorAll('.lang-en');
+    const langSO = document.querySelectorAll('.lang-so');
+
+    function showEnglish() {
+      document.documentElement.setAttribute("lang", "en");
+      langEN.forEach(el => el.style.display = "block");
+      langSO.forEach(el => el.style.display = "none");
+    }
+    function showSomali() {
+      document.documentElement.setAttribute("lang", "so");
+      langEN.forEach(el => el.style.display = "none");
+      langSO.forEach(el => el.style.display = "block");
+    }
+
+    btnEnglish.addEventListener('click', showEnglish);
+    btnSomali.addEventListener('click', showSomali);
+    btnEnglishMobile.addEventListener('click', () => {
+      showEnglish();
+      toggleMenu(); 
+    });
+    btnSomaliMobile.addEventListener('click', () => {
+      showSomali();
+      toggleMenu();
+    });
+
+    // Default to English
+    showEnglish();
+
+    // ----- Hamburger / Mobile Menu -----
+    const hamburger = document.getElementById('hamburger');
+    const mobileMenu = document.getElementById('mobileMenu');
+    let menuOpen = false;
+    hamburger.addEventListener('click', toggleMenu);
+
+    function toggleMenu() {
+      menuOpen = !menuOpen;
+      if (menuOpen) {
+        mobileMenu.style.display = 'flex';
+      } else {
+        mobileMenu.style.display = 'none';
+      }
+    }
+
+    // ----- Modal Handling -----
+    const readMoreButtons = document.querySelectorAll('.read-more-btn');
+    const closeButtons = document.querySelectorAll('.close-btn');
+    const modals = document.querySelectorAll('.modal');
+
+    // Show the corresponding modal
+    readMoreButtons.forEach(button => {
+      button.addEventListener('click', () => {
+        const modalId = button.getAttribute('data-modal');
+        document.getElementById(modalId).style.display = 'block';
+      });
+    });
+
+    // Close the modal when clicking close button
+    closeButtons.forEach(close => {
+      close.addEventListener('click', () => {
+        const modalId = close.getAttribute('data-close');
+        document.getElementById(modalId).style.display = 'none';
+      });
+    });
+
+    // Close the modal by clicking outside of it
+    window.onclick = function(event) {
+      modals.forEach(modal => {
+        if (event.target === modal) {
+          modal.style.display = 'none';
+        }
+      });
+    }
+  </script>
+</body>
+</html>
